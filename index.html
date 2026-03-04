@@ -14,45 +14,50 @@
 
 <style>
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:'Inter',sans-serif;
-background:#020617;
+background:white;
 }
 
 .gradient{
-background:linear-gradient(135deg,#6366f1,#06b6d4);
+background:linear-gradient(135deg,#3b82f6,#38bdf8);
+color:white;
 }
 
 .glass{
-background:rgba(255,255,255,0.03);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,0.08);
+background:white;
+border:1px solid #e5e7eb;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
 
 </style>
 
 </head>
 
-<body class="text-white">
+<body class="text-gray-800">
 
 
 <!-- NAVBAR -->
 
-<nav class="flex justify-between items-center px-12 py-6 border-b border-gray-800">
+<nav class="flex justify-between items-center px-12 py-6 border-b border-blue-100 bg-white sticky top-0 z-50">
 
-<h1 class="text-2xl font-bold text-indigo-400">
+<h1 class="text-2xl font-bold text-blue-600">
 
 SWIFT Cloud
 
 </h1>
 
-<ul class="flex gap-8 text-gray-300">
+<ul class="flex gap-8 text-gray-700">
 
-<li><a href="#home" class="hover:text-white">Home</a></li>
-<li><a href="#features" class="hover:text-white">Features</a></li>
-<li><a href="#architecture" class="hover:text-white">Architecture</a></li>
-<li><a href="#docs" class="hover:text-white">Document</a></li>
-<li><a href="#contact" class="hover:text-white">Contact</a></li>
+<li><a href="#home" class="hover:text-blue-600">Home</a></li>
+<li><a href="#features" class="hover:text-blue-600">Features</a></li>
+<li><a href="#architecture" class="hover:text-blue-600">Architecture</a></li>
+<li><a href="#docs" class="hover:text-blue-600">Document</a></li>
+<li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
 
 <li>
 
@@ -72,7 +77,7 @@ Download
 
 <!-- HERO -->
 
-<section id="home" class="text-center py-32 px-6">
+<section id="home" class="text-center py-32 px-6 bg-blue-50">
 
 <h1 class="text-6xl font-bold mb-6">
 
@@ -81,7 +86,7 @@ Cloud Storage Client
 
 </h1>
 
-<p class="text-xl text-gray-400 max-w-2xl mx-auto">
+<p class="text-xl text-gray-600 max-w-2xl mx-auto">
 
 Manage files, automate backups and access your data securely
 using OpenStack Swift object storage across multiple platforms.
@@ -98,7 +103,7 @@ Download App
 </a>
 
 <a href="#features"
-class="border border-gray-700 px-8 py-4 rounded-xl">
+class="border border-blue-200 px-8 py-4 rounded-xl hover:bg-blue-50">
 
 Explore Features
 
@@ -129,7 +134,7 @@ File Management
 
 </h3>
 
-<p class="text-gray-400">
+<p class="text-gray-600">
 
 Upload, download, rename and organize files easily on cloud storage.
 
@@ -146,7 +151,7 @@ Smart Backup
 
 </h3>
 
-<p class="text-gray-400">
+<p class="text-gray-600">
 
 Schedule automatic backups and sync files securely to Swift storage.
 
@@ -163,7 +168,7 @@ Dashboard Analytics
 
 </h3>
 
-<p class="text-gray-400">
+<p class="text-gray-600">
 
 Track storage usage and visualize file statistics in real time.
 
@@ -180,7 +185,7 @@ Cross Platform
 
 </h3>
 
-<p class="text-gray-400">
+<p class="text-gray-600">
 
 Available for Windows, Linux, macOS and Android devices.
 
@@ -197,7 +202,7 @@ Secure Authentication
 
 </h3>
 
-<p class="text-gray-400">
+<p class="text-gray-600">
 
 Integrated with OpenStack Keystone authentication tokens.
 
@@ -214,7 +219,7 @@ DICOM Bridge
 
 </h3>
 
-<p class="text-gray-400">
+<p class="text-gray-600">
 
 Upload and archive medical imaging data from Orthanc PACS.
 
@@ -229,7 +234,7 @@ Upload and archive medical imaging data from Orthanc PACS.
 
 <!-- ARCHITECTURE -->
 
-<section id="architecture" class="py-28 text-center bg-gray-950">
+<section id="architecture" class="py-28 text-center bg-blue-50">
 
 <h2 class="text-4xl font-bold mb-16">
 
@@ -243,7 +248,7 @@ System Architecture
 User
 </div>
 
-<div class="text-indigo-400 text-3xl">
+<div class="text-blue-500 text-3xl">
 →
 </div>
 
@@ -251,7 +256,7 @@ User
 SWIFT Cloud App
 </div>
 
-<div class="text-indigo-400 text-3xl">
+<div class="text-blue-500 text-3xl">
 →
 </div>
 
@@ -259,7 +264,7 @@ SWIFT Cloud App
 Keystone Auth
 </div>
 
-<div class="text-indigo-400 text-3xl">
+<div class="text-blue-500 text-3xl">
 →
 </div>
 
@@ -303,7 +308,7 @@ Backup System
 
 <!-- DOWNLOAD -->
 
-<section id="download" class="py-28 text-center bg-gray-950">
+<section id="download" class="py-28 text-center bg-blue-50">
 
 <h2 class="text-4xl font-bold mb-10">
 
@@ -314,27 +319,19 @@ Download SWIFT Cloud
 <div class="flex flex-wrap justify-center gap-6">
 
 <button class="gradient px-8 py-4 rounded-xl">
-
 Windows
-
 </button>
 
 <button class="gradient px-8 py-4 rounded-xl">
-
 Linux
-
 </button>
 
 <button class="gradient px-8 py-4 rounded-xl">
-
 macOS
-
 </button>
 
 <button class="gradient px-8 py-4 rounded-xl">
-
 Android
-
 </button>
 
 </div>
@@ -352,7 +349,7 @@ Documentation
 
 </h2>
 
-<p class="text-gray-400 mb-8">
+<p class="text-gray-600 mb-8">
 
 Full project report and source code available online.
 
@@ -361,15 +358,11 @@ Full project report and source code available online.
 <div class="flex justify-center gap-6">
 
 <button class="glass px-6 py-3 rounded-lg">
-
 View Report
-
 </button>
 
 <button class="glass px-6 py-3 rounded-lg">
-
 GitHub Project
-
 </button>
 
 </div>
@@ -379,7 +372,7 @@ GitHub Project
 
 <!-- CONTACT -->
 
-<section id="contact" class="py-28 text-center bg-gray-950">
+<section id="contact" class="py-28 text-center bg-blue-50">
 
 <h2 class="text-4xl font-bold mb-6">
 
@@ -387,19 +380,19 @@ Contact
 
 </h2>
 
-<p class="text-gray-400">
+<p class="text-gray-600">
 
 Author: Le Huynh Phu Khanh
 
 </p>
 
-<p class="text-gray-400">
+<p class="text-gray-600">
 
 Ho Chi Minh City University of Technology
 
 </p>
 
-<p class="text-gray-400">
+<p class="text-gray-600">
 
 GitHub: github.com/Khanhhcmut
 
@@ -410,7 +403,7 @@ GitHub: github.com/Khanhhcmut
 
 <!-- FOOTER -->
 
-<footer class="text-center py-10 text-gray-500 border-t border-gray-800">
+<footer class="text-center py-10 text-gray-500 border-t border-blue-100 bg-white">
 
 © 2026 SWIFT Cloud
 
