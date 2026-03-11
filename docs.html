@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SWIFT Cloud Docs</title>
+
+<link rel="icon" type="image/png" href="img/favicon.png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Inter',sans-serif;
+}
+
+.gradient{
+background:linear-gradient(135deg,#3b82f6,#38bdf8);
+color:white;
+}
+
+.doc-section{
+display:none;
+}
+
+</style>
+
+</head>
+
+<body class="text-gray-800">
+
+
+<!-- NAVBAR -->
+
+<nav class="flex justify-between items-center px-12 py-6 border-b border-blue-100 bg-white sticky top-0 z-50">
+
+<div class="flex items-center gap-2">
+<img src="img/logo.png" class="h-8">
+<h1 class="text-2xl font-bold text-blue-600">SWIFT Cloud</h1>
+</div>
+
+<ul class="flex gap-8 text-gray-700">
+
+<li><a href="index.html#home" class="hover:text-blue-600">Home</a></li>
+<li><a href="index.html#features" class="hover:text-blue-600">Features</a></li>
+<li><a href="index.html#architecture" class="hover:text-blue-600">Architecture</a></li>
+<li><a href="docs.html" class="hover:text-blue-600">Document</a></li>
+<li><a href="index.html#contact" class="hover:text-blue-600">Contact</a></li>
+
+</ul>
+
+</nav>
+
+
+<!-- DOC LAYOUT -->
+
+<div class="flex h-[calc(100vh-90px)]">
+
+
+<!-- LEFT MENU -->
+
+<div class="w-64 border-r border-gray-200 p-6 space-y-4">
+
+<h2 class="font-semibold text-lg mb-4">Documentation</h2>
+
+<a href="#" onclick="showSection('intro')" class="block hover:text-blue-600">Introduction</a>
+
+<div class="ml-4 text-sm space-y-1">
+<a href="#" onclick="showSection('cloud')" class="block hover:text-blue-600">Cloud Computing</a>
+<a href="#" onclick="showSection('openstack')" class="block hover:text-blue-600">OpenStack</a>
+</div>
+
+<a href="#" onclick="showSection('install')" class="block hover:text-blue-600">Installation</a>
+
+<a href="#" onclick="showSection('usage')" class="block hover:text-blue-600">Usage Guide</a>
+
+<div class="ml-4 text-sm space-y-1">
+<a href="#" onclick="showSection('desktop')" class="block hover:text-blue-600">Desktop (Windows/Linux/macOS)</a>
+<a href="#" onclick="showSection('android')" class="block hover:text-blue-600">Android</a>
+</div>
+
+</div>
+
+
+<!-- RIGHT CONTENT -->
+
+<div class="flex-1 p-10 bg-cover bg-center"
+style="background-image:url('img/background.jpg');">
+
+<div class="bg-white/90 p-10 rounded-xl h-full overflow-y-auto">
+
+
+<!-- INTRODUCTION -->
+
+<section id="intro" class="doc-section">
+
+<h2 class="text-3xl font-bold mb-6">Introduction</h2>
+
+<p class="text-gray-600">
+This documentation introduces the SWIFT Cloud app and its integration
+with OpenStack Swift object storage. The system allows users to store,
+manage and access files from multiple platforms including desktop and
+mobile devices.
+</p>
+
+</section>
+
+
+<!-- CLOUD COMPUTING -->
+
+<section id="cloud" class="doc-section">
+
+<h2 class="text-3xl font-bold mb-6">Cloud Computing</h2>
+
+<p class="text-gray-600 mb-6">
+Cloud computing provides computing resources such as storage, networking
+and processing power over the internet. Instead of maintaining physical
+servers locally, users can dynamically allocate resources from cloud
+providers when needed.
+</p>
+
+<img src="img/5main.png" class="max-w-3xl w-full rounded-xl shadow-md mx-auto my-10">
+
+<h4 class="text-lg font-semibold mb-3">Key Characteristics</h4>
+
+<ul class="text-gray-600 space-y-2 mb-8">
+
+<li>• On-Demand Self-Service</li>
+<li>• Broad Network Access</li>
+<li>• Resource Pooling</li>
+<li>• Rapid Elasticity</li>
+<li>• Measured Service</li>
+
+</ul>
+
+<h4 class="text-lg font-semibold mb-4">Cloud Service Models</h4>
+
+<img src="img/model.png" class="max-w-3xl w-full rounded-xl shadow-md mx-auto my-10">
+
+<ul class="text-gray-600 space-y-2">
+
+<li>• Infrastructure as a Service (IaaS)</li>
+<li>• Platform as a Service (PaaS)</li>
+<li>• Software as a Service (SaaS)</li>
+
+</ul>
+
+</section>
+
+
+<!-- OPENSTACK -->
+
+<section id="openstack" class="doc-section">
+
+<h2 class="text-3xl font-bold mb-6">OpenStack</h2>
+
+<img src="img/openstack.png" class="max-w-4xl w-full rounded-xl shadow-md mx-auto my-12">
+
+<p class="text-gray-600 mb-6">
+OpenStack is an open-source cloud computing platform used to build and manage
+private or public cloud infrastructures. It provides a collection of modular
+services responsible for computing, networking, storage and identity
+management. These services communicate through APIs to create a flexible and
+scalable Infrastructure-as-a-Service (IaaS) environment.
+</p>
+
+<p class="text-gray-600 mb-10">
+The modular architecture of OpenStack allows different services to operate
+independently while still working together as a complete cloud platform.
+Each service focuses on a specific task such as virtual machine management,
+network configuration or object storage.
+</p>
+
+
+
+<img src="img/stack.png" class="max-w-4xl w-full rounded-xl shadow-md mx-auto my-12">
+
+
+
+<h3 class="text-xl font-semibold mb-4">Core Components of OpenStack</h3>
+
+<ul class="text-gray-600 space-y-3 mb-10">
+
+<li>
+<b>Horizon (Dashboard)</b> – A web-based interface that allows administrators
+and users to manage cloud resources such as instances, networks and storage
+through a graphical dashboard.
+</li>
+
+<li>
+<b>Nova (Compute Service)</b> – Responsible for provisioning and managing
+virtual machine instances in the cloud infrastructure.
+</li>
+
+<li>
+<b>Neutron (Networking Service)</b> – Provides networking capabilities
+including IP management, routing and virtual network configuration.
+</li>
+
+<li>
+<b>Glance (Image Service)</b> – Stores and manages virtual machine images
+used for launching instances.
+</li>
+
+<li>
+<b>Cinder (Block Storage)</b> – Provides persistent block storage volumes
+that can be attached to virtual machines.
+</li>
+
+<li>
+<b>Swift (Object Storage)</b> – A distributed object storage system designed
+to store large amounts of unstructured data such as files, images and
+backups.
+</li>
+
+<li>
+<b>Keystone (Identity Service)</b> – Manages authentication and authorization
+for all OpenStack services.
+</li>
+
+</ul>
+
+
+
+<h3 class="text-xl font-semibold mb-4">Authentication and Storage Workflow</h3>
+
+<p class="text-gray-600 mb-6">
+In this project, OpenStack Keystone and Swift work together to provide
+secure access to cloud storage. Keystone handles authentication while
+Swift manages object storage operations. The system uses a token-based
+authentication mechanism to allow secure communication between services.
+</p>
+
+
+
+<h3 class="text-xl font-semibold mb-4">System Architecture</h3>
+
+<p class="text-gray-600 mb-10">
+Swift organizes data into containers and objects. When users upload files,
+they are stored as objects inside containers. Swift distributes these
+objects across multiple storage nodes to ensure reliability and high
+availability. This distributed architecture enables the storage system to
+scale efficiently as the amount of stored data increases.
+</p>
+
+
+
+<img src="img/archi.png" class="max-w-5xl w-full rounded-xl shadow-md mx-auto my-12">
+
+
+
+<h3 class="text-xl font-semibold mb-4">System Workflow</h3>
+
+<ul class="text-gray-600 space-y-3">
+
+<li>
+<b>1. User Interaction</b> – The user accesses the SWIFT Cloud client
+application from a desktop, laptop or mobile device.
+</li>
+
+<li>
+<b>2. Credential Submission</b> – The client application sends the user's
+credentials to the Keystone identity service for authentication.
+</li>
+
+<li>
+<b>3. Token Generation</b> – Keystone verifies the credentials and generates
+an authentication token that represents the user's identity.
+</li>
+
+<li>
+<b>4. Authenticated Request</b> – The client sends a request to the Swift
+object storage service along with the authentication token.
+</li>
+
+<li>
+<b>5. Token Verification</b> – Swift checks the token with Keystone to
+confirm that the request is authorized.
+</li>
+
+<li>
+<b>6. Storage Operation</b> – Swift processes the request such as uploading,
+downloading or listing objects stored in containers.
+</li>
+
+<li>
+<b>7. Response Delivery</b> – The result of the operation is returned to
+the client application and displayed to the user.
+</li>
+
+</ul>
+
+</section>
+
+<!-- INSTALLATION -->
+
+<section id="install" class="doc-section">
+
+<h2 class="text-3xl font-bold mb-6">Installation</h2>
+
+<p class="text-gray-600 mb-6">
+To run the SWIFT Cloud client application, users must first deploy their own
+OpenStack Swift storage server. This section describes how to install a basic
+OpenStack Swift environment using DevStack on a Linux system.
+</p>
+
+
+
+<h3 class="text-xl font-semibold mb-4">1. Install the SWIFT Cloud Client</h3>
+
+<ul class="text-gray-600 space-y-2 mb-8">
+
+<li>• Download the SWIFT Cloud client from the <b>Download</b> section of the main website.</li>
+
+<li>• Extract the downloaded package to your local machine.</li>
+
+<li>• Run the application according to your operating system.</li>
+
+<li>• Ensure that you have access credentials for an OpenStack Swift server.</li>
+
+</ul>
+
+
+
+<h3 class="text-xl font-semibold mb-4">2. Prepare a DevStack Environment</h3>
+
+<p class="text-gray-600 mb-4">
+To deploy OpenStack Swift locally, a DevStack environment must be created.
+DevStack is a tool that simplifies the installation and configuration of
+OpenStack components for development and testing purposes.
+</p>
+
+<p class="text-gray-600 mb-4">
+Create a new user called <b>stack</b> which will be used to run the OpenStack
+services.
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+sudo useradd -s /bin/bash -d /opt/stack -m stack
+sudo chmod +x /opt/stack
+echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
+sudo -u stack -i
+</pre>
+
+
+
+<h3 class="text-xl font-semibold mb-4">3. Download DevStack</h3>
+
+<p class="text-gray-600 mb-4">
+Clone the official DevStack repository from OpenStack and enter the
+DevStack directory.
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+git clone https://opendev.org/openstack/devstack
+cd devstack
+</pre>
+
+
+
+<h3 class="text-xl font-semibold mb-4">4. Configure DevStack</h3>
+
+<p class="text-gray-600 mb-4">
+Inside the <b>devstack</b> directory, create a configuration file named
+<b>local.conf</b>. This file defines the services that will be installed
+and configured during the DevStack setup.
+</p>
+
+<p class="text-gray-600 mb-4">
+You must configure your own passwords and host IP address.
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+[[local|localrc]]
+
+# ===== Passwords =====
+ADMIN_PASSWORD=
+DATABASE_PASSWORD=
+RABBIT_PASSWORD=
+SERVICE_PASSWORD=
+
+# ===== Network =====
+HOST_IP=
+
+# ===== Disable default services =====
+disable_all_services
+
+# ===== Core services =====
+enable_service mysql
+enable_service rabbit
+enable_service key
+enable_service memcached
+enable_service apache
+
+# ===== Swift services =====
+enable_service swift
+enable_service s-proxy
+enable_service s-object
+enable_service s-container
+enable_service s-account
+
+# ===== Horizon Dashboard =====
+enable_service horizon
+
+# ===== Swift Configuration =====
+SWIFT_HASH=devstackswift
+SWIFT_REPLICAS=1
+SWIFT_DATA_DIR=$DEST/data/swift
+</pre>
+
+
+
+<h3 class="text-xl font-semibold mb-4">5. Install OpenStack Services</h3>
+
+<p class="text-gray-600 mb-4">
+After creating the configuration file, run the DevStack installation
+script. This script will automatically install and configure all required
+OpenStack services including Keystone, Swift and Horizon.
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-8 text-sm">
+./stack.sh
+</pre>
+
+
+
+<h3 class="text-xl font-semibold mb-4">6. Configure Users in Horizon</h3>
+
+<p class="text-gray-600 mb-8">
+Once the installation is complete, users must log in to the Horizon
+dashboard to configure user accounts, projects and permissions required
+for accessing the Swift object storage service.
+</p>
+
+<h3 class="text-xl font-semibold mb-4">7. Increase Swift Storage Capacity</h3>
+
+<p class="text-gray-600 mb-4">
+By default, DevStack allocates a relatively small disk image for the
+OpenStack Swift storage service. For testing environments or development
+purposes, it is often necessary to increase the available storage capacity.
+The following steps explain how to resize the Swift storage image.
+</p>
+
+
+<p class="text-gray-600 mb-4">
+First, list the available block devices in the system to understand the
+current storage layout.
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+lsblk
+</pre>
+
+
+<p class="text-gray-600 mb-4">
+Next, identify the loop device associated with the Swift storage image.
+Since the loop device number may vary depending on the system configuration,
+use the following command to locate the correct device.
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+sudo losetup -l | grep swift.img
+</pre>
+
+
+<p class="text-gray-600 mb-4">
+The output will display the loop device currently mapped to the Swift
+storage image. For example:
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+/dev/loop5   /opt/stack/data/swift/drives/images/swift.img
+</pre>
+
+
+<p class="text-gray-600 mb-4">
+Once the correct loop device is identified, resize the Swift disk image.
+Replace <b>XG</b> with the desired storage size (for example 50G, 70G or 100G).
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+sudo truncate -s XG /opt/stack/data/swift/drives/images/swift.img
+</pre>
+
+
+<p class="text-gray-600 mb-4">
+After resizing the image file, reload the loop device so that the system
+recognizes the new disk size. Replace <b>/dev/loopX</b> with the loop device
+identified in the previous step.
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+sudo losetup -c /dev/loopX
+</pre>
+
+
+<p class="text-gray-600 mb-4">
+Finally, verify that the Swift storage volume has been successfully expanded.
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-8 text-sm">
+df -h /opt/stack/data/swift/drives
+</pre>
+
+
+<p class="text-gray-600">
+If the configuration is correct, the displayed storage capacity should
+reflect the newly allocated disk size.
+</p>
+
+<h3 class="text-xl font-semibold mb-4">8. Disable Horizon (Optional)</h3>
+
+<p class="text-gray-600 mb-4">
+After completing the initial configuration, the Horizon dashboard can be
+disabled if it is no longer required.
+</p>
+
+<p class="text-gray-600 mb-4">
+Edit the Horizon configuration file:
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+sudo nano /etc/apache2/sites-enabled/horizon.conf
+</pre>
+
+<p class="text-gray-600 mb-4">
+Add the following configuration to disable dashboard access:
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+&lt;Location /dashboard&gt;
+Require all denied
+&lt;/Location&gt;
+</pre>
+
+<p class="text-gray-600 mb-4">
+Reload the Apache service to apply the changes:
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm">
+sudo systemctl reload apache2
+</pre>
+
+</section>
+
+<!-- USAGE -->
+
+<section id="usage" class="doc-section">
+
+<h2 class="text-3xl font-bold mb-6">Usage Guide</h2>
+
+<p class="text-gray-600">
+This section explains how to use the SWIFT Cloud app across supported platforms.
+</p>
+
+</section>
+
+
+<!-- DESKTOP -->
+
+<section id="desktop" class="doc-section">
+
+<h2 class="text-3xl font-bold mb-6">
+Desktop Application (Windows / Linux / macOS)
+</h2>
+
+<p class="text-gray-600 mb-8">
+The SWIFT Cloud desktop client provides a graphical interface that allows
+users to interact with OpenStack Swift object storage. Through this
+application, users can upload, download, organize and manage files stored
+in the cloud. The interface is designed to be simple and intuitive while
+still providing powerful cloud storage management capabilities.
+</p>
+
+
+<h3 class="text-xl font-semibold mb-4">1. Login to the Application</h3>
+
+<img src="img/manual1.png" class="max-w-4xl w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• Users must enter their <b>Username</b>, <b>Password</b> and <b>Project Name</b> to authenticate with the OpenStack Swift storage system.</li>
+
+<li>• If any required field is missing or incorrect, the application will display an authentication error.</li>
+
+<li>• The <b>Help</b> menu provides several configuration options including:</li>
+
+<li class="ml-6">- User Manual: Displays the application usage guide.</li>
+
+<li class="ml-6">- Change Swift Auth URL: Allows users to configure the authentication endpoint of the OpenStack Swift server depending on their deployment environment.</li>
+
+<li class="ml-6">- Enable/Disable DICOM Bridge: Allows users to enable or disable the DICOM Bridge feature if medical imaging integration is required.</li>
+
+</ul>
+
+
+<h3 class="text-xl font-semibold mb-4">2. Main Application Interface</h3>
+
+<img src="img/manual2.png" class="max-w-4xl w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• The application interface is divided into two main sections.</li>
+
+<li>• <b>Left Panel:</b> Contains the application logo, user controls, Help button, Logout option and the navigation tabs.</li>
+
+<li>• <b>Right Panel:</b> Displays the content of the selected functional tab.</li>
+
+<li>• Users can switch between different features using the navigation tabs.</li>
+
+</ul>
+
+
+<h3 class="text-xl font-semibold mb-4">3. Dashboard</h3>
+
+<img src="img/manual2.png" class="max-w-4xl w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• The Dashboard provides an overview of the current cloud storage usage.</li>
+
+<li>• Files are categorized based on their file extensions (documents, images, videos, etc.).</li>
+
+<li>• A <b>pie chart</b> visualizes the storage distribution across different file types.</li>
+
+<li>• A <b>line chart</b> displays the number of files uploaded within the last hour.</li>
+
+</ul>
+
+
+<h3 class="text-xl font-semibold mb-4">4. My File Manager</h3>
+
+<img src="img/manual3.png" class="max-w-4xl w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-6">
+
+<li>• The <b>My File</b> tab provides a file manager interface for organizing cloud storage content.</li>
+
+<li>• The following main operations are available:</li>
+
+<li class="ml-6">- Refresh: Reload the current folder and file list.</li>
+
+<li class="ml-6">- New Folder: Create a new directory inside the current container.</li>
+
+<li class="ml-6">- Upload File/Folder: Upload files or entire folders from the local system.</li>
+
+</ul>
+
+
+<img src="img/manual4.png" class="max-w-4xl w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• Additional file management features include:</li>
+
+<li class="ml-6">- Download files or folders from cloud storage.</li>
+
+<li class="ml-6">- Delete files or folders.</li>
+
+<li class="ml-6">- Rename existing files or directories.</li>
+
+<li class="ml-6">- Search within the current folder using the search bar.</li>
+
+<li class="ml-6">- Use the global search function to locate files across the storage system.</li>
+
+<li class="ml-6">- The usage bar displays the currently available cloud storage capacity.</li>
+
+<li class="ml-6">- Table headers allow sorting file attributes in ascending or descending order.</li>
+
+<li class="ml-6">- Drag-and-drop functionality allows users to upload files directly into the interface.</li>
+
+<li class="ml-6">- Image files such as <b>.jpg</b> or <b>.png</b> can be previewed by double-clicking.</li>
+
+<li class="ml-6">- Text files (<b>.txt</b>) can be opened, edited and saved directly within the application.</li>
+
+</ul>
+
+
+<h3 class="text-xl font-semibold mb-4">5. Backup System</h3>
+
+<img src="img/manual5.png" class="max-w-4xl w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• The Backup tab allows users to configure automatic backups.</li>
+
+<li>• Users can define the backup schedule including:</li>
+
+<li class="ml-6">- Daily backup</li>
+
+<li class="ml-6">- Weekly backup</li>
+
+<li class="ml-6">- Specific day backup</li>
+
+<li>• Users can select local folders to be backed up to the cloud storage.</li>
+
+<li>• The <b>Backup Now</b> option performs an immediate backup based on the current configuration.</li>
+
+<li>• The <b>Clear Backup Setting</b> button removes the existing backup configuration.</li>
+
+<li>• The system displays the remaining time before the next scheduled backup.</li>
+
+</ul>
+
+
+<h3 class="text-xl font-semibold mb-4">6. DICOM Bridge</h3>
+
+<img src="img/manual6.png" class="max-w-4xl w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• The DICOM Bridge tab integrates medical imaging data with cloud storage.</li>
+
+<li>• Users can retrieve study lists from the Orthanc PACS server.</li>
+
+<li>• Available functions include:</li>
+
+<li class="ml-6">- Refresh Study List</li>
+
+<li class="ml-6">- Load More Studies</li>
+
+<li class="ml-6">- Upload Selected Study to Cloud Storage</li>
+
+</ul>
+
+
+<h3 class="text-xl font-semibold mb-4">7. Help and Configuration</h3>
+
+<img src="img/manual7.png" class="max-w-4xl w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2">
+
+<li>• The Help dialog provides several configuration and support features.</li>
+
+<li class="ml-6">- User Manual: Displays the application documentation.</li>
+
+<li class="ml-6">- Change DICOMweb URL: Configure the Orthanc DICOM server endpoint.</li>
+
+<li class="ml-6">- Change User Password: Allows users to update their password.</li>
+
+<li class="ml-6">- Change Cloud Storage Limit: Modify the storage quota (requires administrator credentials).</li>
+
+</ul>
+
+</section>
+
+</section>
+
+
+<!-- ANDROID -->
+
+<section id="android" class="doc-section">
+
+<h2 class="text-3xl font-bold mb-6">Android Application</h2>
+
+<p class="text-gray-600 mb-8">
+The Android version of the SWIFT Cloud client allows users to access
+OpenStack Swift object storage directly from mobile devices. The mobile
+application provides essential cloud storage functions such as browsing
+files, uploading data, managing backups and interacting with the cloud
+storage system through a simplified mobile interface.
+</p>
+
+
+
+<h3 class="text-xl font-semibold mb-4">1. Login to the Application</h3>
+
+<img src="img/pic1.png" class="max-w-md w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• Users must enter their <b>Username</b>, <b>Password</b> and <b>Project Name</b> to authenticate with the OpenStack Swift server.</li>
+
+<li>• The application sends the credentials to the <b>Keystone Identity Service</b> for authentication.</li>
+
+<li>• If any required field is missing or incorrect, the login process will fail and an error message will be displayed.</li>
+
+<li>• After successful authentication, the user is redirected to the main interface of the application.</li>
+
+</ul>
+
+
+
+<h3 class="text-xl font-semibold mb-4">2. Main Application Interface</h3>
+
+<img src="img/pic2.png" class="max-w-md w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• The main interface contains the primary navigation menu of the application.</li>
+
+<li>• Users can switch between different functional sections such as Dashboard, My Files, Backup and Settings.</li>
+
+<li>• The interface is optimized for mobile interaction and touch gestures.</li>
+
+<li>• Each section displays specific information or management tools related to cloud storage.</li>
+
+</ul>
+
+
+
+<h3 class="text-xl font-semibold mb-4">3. Dashboard</h3>
+
+<img src="img/pic3.png" class="max-w-md w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• The Dashboard provides a quick overview of the user's cloud storage system.</li>
+
+<li>• It displays statistical information about stored files and current storage usage.</li>
+
+<li>• Users can view charts or summaries showing how the cloud storage space is being utilized.</li>
+
+<li>• This view helps users quickly understand the status of their stored data.</li>
+
+</ul>
+
+
+
+<h3 class="text-xl font-semibold mb-4">4. My Files</h3>
+
+<img src="img/pic4.png" class="max-w-md w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• The <b>My Files</b> section functions as a mobile file manager for cloud storage.</li>
+
+<li>• Users can browse files and folders stored in OpenStack Swift containers.</li>
+
+<li>• Supported operations include:</li>
+
+<li class="ml-6">- Upload files from the mobile device to cloud storage.</li>
+<li class="ml-6">- Download files stored in the cloud.</li>
+<li class="ml-6">- Delete files that are no longer required.</li>
+<li class="ml-6">- Navigate through folders and containers.</li>
+
+<li>• The interface is designed to resemble common mobile file explorer applications.</li>
+
+</ul>
+
+
+
+<h3 class="text-xl font-semibold mb-4">5. Backup Feature</h3>
+
+<img src="img/pic5.png" class="max-w-md w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• The Backup feature allows users to upload important files from their mobile device to cloud storage.</li>
+
+<li>• Users can configure which files or folders should be backed up.</li>
+
+<li>• Backup operations can be performed manually whenever needed.</li>
+
+<li>• This feature helps users maintain secure copies of important data in the cloud.</li>
+
+</ul>
+
+
+
+<h3 class="text-xl font-semibold mb-4">6. DICOM Bridge</h3>
+
+<img src="img/pic6.png" class="max-w-md w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2 mb-10">
+
+<li>• The DICOM Bridge enables integration between the mobile application and medical imaging systems.</li>
+
+<li>• The application can retrieve study data from an Orthanc PACS server.</li>
+
+<li>• Users can select medical imaging studies and upload them to cloud storage.</li>
+
+<li>• This feature is particularly useful for medical environments where imaging data needs to be stored and accessed remotely.</li>
+
+</ul>
+
+
+
+<h3 class="text-xl font-semibold mb-4">7. Help and Settings</h3>
+
+<img src="img/pic7.png" class="max-w-md w-full rounded-xl shadow-md mx-auto my-8">
+
+<ul class="text-gray-600 space-y-2">
+
+<li>• The Help section provides documentation and configuration options for the application.</li>
+
+<li>• Users can access the built-in user manual for guidance on how to use the application.</li>
+
+<li>• Configuration options allow users to modify system parameters such as the Swift authentication URL.</li>
+
+<li>• Additional settings allow users to update account information and application preferences.</li>
+
+</ul>
+
+</section>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function showSection(id){
+
+document.querySelectorAll('.doc-section').forEach(section=>{
+section.style.display='none';
+});
+
+document.getElementById(id).style.display='block';
+
+}
+
+showSection('intro');
+
+</script>
+
+
+</body>
+</html>

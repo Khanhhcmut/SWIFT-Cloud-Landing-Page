@@ -8,7 +8,9 @@
 
 <title>SWIFT Cloud</title>
 
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="img/favicon.png">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -49,7 +51,7 @@ box-shadow:0 10px 25px rgba(0,0,0,0.05);
 <nav class="flex justify-between items-center px-12 py-6 border-b border-blue-100 bg-white sticky top-0 z-50">
 
 <div class="flex items-center gap-2">
-<img src="logo.png" class="h-8">
+<img src="img/logo.png" class="h-8">
 <h1 class="text-2xl font-bold text-blue-600">SWIFT Cloud</h1>
 </div>
 
@@ -58,7 +60,7 @@ box-shadow:0 10px 25px rgba(0,0,0,0.05);
 <li><a href="#home" class="hover:text-blue-600">Home</a></li>
 <li><a href="#features" class="hover:text-blue-600">Features</a></li>
 <li><a href="#architecture" class="hover:text-blue-600">Architecture</a></li>
-<li><a href="#docs" class="hover:text-blue-600">Document</a></li>
+<li><a href="docs.html#intro" class="hover:text-blue-600">Document</a></li>
 <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
 
 <li>
@@ -78,155 +80,116 @@ Download
 
 
 <!-- HERO -->
+<section id="home" class="py-32 px-12 scroll-mt-24 bg-cover bg-center" style="background-image:url('img/background.jpg');">
 
-<section id="home" class="text-center py-32 px-6 scroll-mt-24 bg-cover bg-center" style="background-image:url('background.jpg');">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+
+<!-- LEFT CONTENT -->
+
+<div>
 
 <h1 class="text-6xl font-bold mb-6">
-
 OpenStack Swift
-Cloud Storage Client
-
+Cloud Storage App
 </h1>
 
-<p class="text-xl text-gray-600 max-w-2xl mx-auto">
-
+<p class="text-xl text-gray-600 max-w-xl">
 Manage files, automate backups and access your data securely
 using OpenStack Swift object storage across multiple platforms.
-
 </p>
 
-<div class="mt-12 flex justify-center gap-6">
+<div class="mt-12 flex gap-6">
 
 <a href="#download"
 class="gradient px-8 py-4 rounded-xl text-lg">
-
 Download App
-
 </a>
 
 <a href="#features"
 class="border border-blue-200 px-8 py-4 rounded-xl hover:bg-blue-50">
-
 Explore Features
-
 </a>
 
 </div>
 
-</section>
+</div>
 
+
+<!-- RIGHT IMAGE GRID -->
+
+<div class="relative w-full h-[460px]">
+
+<div class="absolute top-0 left-0 bg-white p-2 rounded-2xl shadow-2xl w-72">
+<img src="img/img1.png" class="w-full h-auto rounded-lg object-contain">
+</div>
+
+<div class="absolute top-20 right-0 bg-white p-2 rounded-2xl shadow-2xl w-80">
+<img src="img/img2.png" class="w-full h-auto rounded-lg object-contain">
+</div>
+
+<div class="absolute bottom-0 left-32 bg-white p-2 rounded-2xl shadow-2xl w-72">
+<img src="img/img3.png" class="w-full h-auto rounded-lg object-contain">
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 <!-- FEATURES -->
 
 <section id="features" class="py-28 px-12">
 
 <h2 class="text-4xl font-bold text-center mb-20">
-
 Core Features
-
 </h2>
 
-<div class="grid md:grid-cols-3 gap-10">
+<div class="grid grid-cols-6 gap-10 max-w-6xl mx-auto">
 
-<div class="glass p-8 rounded-2xl hover:scale-105 transition">
-
+<div class="col-span-2 p-8 rounded-2xl border border-gray-200 transition hover:bg-blue-50 hover:scale-105">
 <h3 class="text-xl font-semibold mb-4">
-
 File Management
-
 </h3>
-
 <p class="text-gray-600">
-
 Upload, download, rename and organize files easily on cloud storage.
-
 </p>
-
 </div>
 
-
-<div class="glass p-8 rounded-2xl hover:scale-105 transition">
-
+<div class="col-span-2 p-8 rounded-2xl border border-gray-200 transition hover:bg-blue-50 hover:scale-105">
 <h3 class="text-xl font-semibold mb-4">
-
 Smart Backup
-
 </h3>
-
 <p class="text-gray-600">
-
 Schedule automatic backups and sync files securely to Swift storage.
-
 </p>
-
 </div>
 
-
-<div class="glass p-8 rounded-2xl hover:scale-105 transition">
-
+<div class="col-span-2 p-8 rounded-2xl border border-gray-200 transition hover:bg-blue-50 hover:scale-105">
 <h3 class="text-xl font-semibold mb-4">
-
 Dashboard Analytics
-
 </h3>
-
 <p class="text-gray-600">
-
 Track storage usage and visualize file statistics in real time.
-
 </p>
-
 </div>
 
-
-<div class="glass p-8 rounded-2xl hover:scale-105 transition">
-
+<div class="col-start-2 col-span-2 p-8 rounded-2xl border border-gray-200 transition hover:bg-blue-50 hover:scale-105">
 <h3 class="text-xl font-semibold mb-4">
-
 Cross Platform
-
 </h3>
-
 <p class="text-gray-600">
-
 Available for Windows, Linux, macOS and Android devices.
-
 </p>
-
 </div>
 
-
-<div class="glass p-8 rounded-2xl hover:scale-105 transition">
-
+<div class="col-start-4 col-span-2 p-8 rounded-2xl border border-gray-200 transition hover:bg-blue-50 hover:scale-105">
 <h3 class="text-xl font-semibold mb-4">
-
 Secure Authentication
-
 </h3>
-
 <p class="text-gray-600">
-
 Integrated with OpenStack Keystone authentication tokens.
-
 </p>
-
-</div>
-
-
-<div class="glass p-8 rounded-2xl hover:scale-105 transition">
-
-<h3 class="text-xl font-semibold mb-4">
-
-DICOM Bridge
-
-</h3>
-
-<p class="text-gray-600">
-
-Upload and archive medical imaging data from Orthanc PACS.
-
-</p>
-
 </div>
 
 </div>
@@ -236,139 +199,171 @@ Upload and archive medical imaging data from Orthanc PACS.
 
 <!-- ARCHITECTURE -->
 
-<section id="architecture" class="py-28 text-center bg-cover bg-center" style="background-image: url('background.jpg');">
+<section id="architecture" class="py-28 text-center bg-cover bg-center" style="background-image: url('img/background.jpg');">
 
 <h2 class="text-4xl font-bold mb-16">
-
 System Architecture
-
 </h2>
 
-<div class="flex justify-center items-center gap-12 flex-wrap">
-
-<div class="glass p-6 rounded-xl">
-User
-</div>
-
-<div class="text-blue-500 text-3xl">
-→
-</div>
-
-<div class="glass p-6 rounded-xl">
-SWIFT Cloud App
-</div>
-
-<div class="text-blue-500 text-3xl">
-→
-</div>
-
-<div class="glass p-6 rounded-xl">
-Keystone Auth
-</div>
-
-<div class="text-blue-500 text-3xl">
-→
-</div>
-
-<div class="glass p-6 rounded-xl">
-Swift Storage
-</div>
-
+<div class="flex justify-center">
+<img src="img/archi.png" class="max-w-5xl w-full rounded-xl shadow-lg">
 </div>
 
 </section>
-
 
 <!-- PREVIEW -->
 
-<section class="py-28 text-center">
+<section class="py-28 px-12">
 
-<h2 class="text-4xl font-bold mb-20">
-
+<h2 class="text-4xl font-bold text-center mb-20">
 Application Preview
-
 </h2>
 
-<div class="grid md:grid-cols-3 gap-10 px-12">
+<div class="max-w-5xl mx-auto space-y-24">
 
-<div class="glass p-10 rounded-2xl">
+<!-- DASHBOARD -->
+
+<div class="text-center">
+
+<img src="img/img2.png" class="rounded-2xl shadow-xl w-full mb-10">
+
+<h3 class="text-2xl font-semibold mb-6">
 App Dashboard
+</h3>
+
+<ul class="text-gray-600 text-left max-w-3xl mx-auto space-y-3">
+
+<li>• Overview of total stored files categorized by type such as documents, images, videos, audios and others.</li>
+
+<li>• Visual storage distribution chart to quickly understand how storage space is being used.</li>
+
+<li>• Real-time statistics showing storage consumption compared to the total available capacity.</li>
+
+<li>• Quick navigation cards for different file categories allowing users to access data faster.</li>
+
+<li>• Clean and minimal interface designed to give users a clear snapshot of their cloud storage.</li>
+
+</ul>
+
 </div>
 
-<div class="glass p-10 rounded-2xl">
-My Files Manager
-</div>
 
-<div class="glass p-10 rounded-2xl">
-Backup System
+<!-- FILE MANAGER -->
+
+<div class="text-center">
+
+<img src="img/img3.png" class="rounded-2xl shadow-xl w-full mb-10">
+
+<h3 class="text-2xl font-semibold mb-6">
+My File Manager
+</h3>
+
+<ul class="text-gray-600 text-left max-w-3xl mx-auto space-y-3">
+
+<li>• Folder navigation system for organizing files inside cloud storage.</li>
+
+<li>• Upload files or entire folders directly to OpenStack Swift storage.</li>
+
+<li>• Search functionality to quickly locate files or directories.</li>
+
+<li>• Display of detailed file information including size and last updated timestamp.</li>
+
+<li>• Simple interface similar to traditional file explorers for easier user interaction.</li>
+
+</ul>
+
 </div>
 
 </div>
 
 </section>
 
-
 <!-- DOWNLOAD -->
 
-<section id="download" class="py-28 text-center bg-cover bg-center" style="background-image: url('background.jpg');">
+<section id="download" class="py-28 text-center bg-cover bg-center" style="background-image: url('img/background.jpg');">
 
 <h2 class="text-4xl font-bold mb-10">
-
 Download SWIFT Cloud
-
 </h2>
 
 <div class="flex flex-wrap justify-center gap-6">
 
-<button class="gradient px-8 py-4 rounded-xl">
+<a href="https://github.com/Khanhhcmut/SWIFT_Cloud_App/releases/download/v1.0.0/Windows.zip" class="gradient px-8 py-4 rounded-xl">
 Windows
-</button>
+</a>
 
-<button class="gradient px-8 py-4 rounded-xl">
+<a href="https://github.com/Khanhhcmut/SWIFT_Cloud_App/releases/download/v1.0.0/Linux.zip" class="gradient px-8 py-4 rounded-xl">
 Linux
-</button>
+</a>
 
-<button class="gradient px-8 py-4 rounded-xl">
+<a href="https://github.com/Khanhhcmut/SWIFT_Cloud_App/releases/download/v1.0.0/macOS.zip" class="gradient px-8 py-4 rounded-xl">
 macOS
-</button>
+</a>
 
-<button class="gradient px-8 py-4 rounded-xl">
+<a href="https://github.com/Khanhhcmut/SWIFT_Cloud_App_Android/releases/download/v1.0.0/SWIFT.Cloud.apk" class="gradient px-8 py-4 rounded-xl">
 Android
-</button>
+</a>
 
 </div>
+
+<p class="mt-8 text-gray-700">
+How to use?
+<a href="docs.html" target="_blank" class="text-blue-600 hover:underline">
+View Documentation
+</a>
+</p>
 
 </section>
 
 <!-- CONTACT -->
 
-<section id="contact" class="py-28 text-center">
+<section id="contact" class="pt-28 text-center bg-gray-50">
 
 <h2 class="text-4xl font-bold mb-6">
-
 Contact
-
 </h2>
 
-<p class="text-gray-600">
-
+<p class="text-gray-600 mb-2">
 Author: Le Huynh Phu Khanh
-
 </p>
 
-<p class="text-gray-600">
-
+<p class="text-gray-600 mb-10">
 Ho Chi Minh City University of Technology
-
 </p>
 
-<p class="text-gray-600">
+<!-- SOCIAL ICONS -->
 
-GitHub: github.com/Khanhhcmut
+<div class="flex justify-center gap-8 text-gray-600 text-2xl mb-16">
 
-</p>
+<a href="https://www.facebook.com/phukhanh.lehuynh/" target="_blank" class="hover:text-blue-600 transition">
+<i class="fab fa-facebook"></i>
+</a>
+
+<a href="https://www.linkedin.com/in/lehuynhphukhanh/" target="_blank" class="hover:text-blue-600 transition">
+<i class="fab fa-linkedin"></i>
+</a>
+
+<a href="https://github.com/Khanhhcmut" target="_blank" class="hover:text-blue-600 transition">
+<i class="fab fa-github"></i>
+</a>
+
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=lephukhanhhuynh@gmail.com" target="_blank" class="hover:text-blue-600 transition">
+<i class="fas fa-envelope"></i>
+</a>
+
+</div>
 
 </section>
+
+<!-- FOOTER -->
+
+<footer class="text-black text-center py-8 bg-cover bg-center" style="background-image:url('img/background.jpg');">
+
+<p class="text-sm">
+© 2026 SWIFT Cloud. All rights reserved.
+</p>
+
+</footer>
 
 </body>
 </html>
