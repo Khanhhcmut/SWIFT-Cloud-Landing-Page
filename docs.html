@@ -299,45 +299,37 @@ the client application and displayed to the user.
 
 <!-- INSTALLATION -->
 
+<!-- INSTALLATION -->
+
 <section id="install" class="doc-section">
 
 <h2 class="text-3xl font-bold mb-6">Installation</h2>
 
 <p class="text-gray-600 mb-6">
-To run the SWIFT Cloud client application, users must first deploy their own
-OpenStack Swift storage server. This section describes how to install a basic
-OpenStack Swift environment using DevStack on a Linux system.
+To run the SWIFT Cloud client application, users must first deploy an
+OpenStack Swift storage server. This section describes how to install
+OpenStack Swift using DevStack and configure a replicated Swift storage
+environment for testing data redundancy, fault tolerance and recovery.
 </p>
 
-
-
-<h3 class="text-xl font-semibold mb-4">1. Install the SWIFT Cloud Client</h3>
+<h3 class="text-xl font-semibold mb-4">
+1. Install the SWIFT Cloud Client
+</h3>
 
 <ul class="text-gray-600 space-y-2 mb-8">
-
-<li>• Download the SWIFT Cloud client from the <b>Download</b> section of the main website.</li>
-
-<li>• Extract the downloaded package to your local machine.</li>
-
+<li>• Download the SWIFT Cloud client from the Download section of the website.</li>
+<li>• Extract the package to your local machine.</li>
 <li>• Run the application according to your operating system.</li>
-
-<li>• Ensure that you have access credentials for an OpenStack Swift server.</li>
-
+<li>• Ensure that you have valid OpenStack Swift credentials.</li>
 </ul>
 
-
-
-<h3 class="text-xl font-semibold mb-4">2. Prepare a DevStack Environment</h3>
-
-<p class="text-gray-600 mb-4">
-To deploy OpenStack Swift locally, a DevStack environment must be created.
-DevStack is a tool that simplifies the installation and configuration of
-OpenStack components for development and testing purposes.
-</p>
+<h3 class="text-xl font-semibold mb-4">
+2. Prepare a DevStack Environment
+</h3>
 
 <p class="text-gray-600 mb-4">
-Create a new user called <b>stack</b> which will be used to run the OpenStack
-services.
+Create a dedicated user named <b>stack</b> which will be used to run
+OpenStack services.
 </p>
 
 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
@@ -347,218 +339,346 @@ echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
 sudo -u stack -i
 </pre>
 
-
-
-<h3 class="text-xl font-semibold mb-4">3. Download DevStack</h3>
-
-<p class="text-gray-600 mb-4">
-Clone the official DevStack repository from OpenStack and enter the
-DevStack directory.
-</p>
+<h3 class="text-xl font-semibold mb-4">
+3. Download DevStack
+</h3>
 
 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
 git clone https://opendev.org/openstack/devstack
 cd devstack
 </pre>
 
-
-
-<h3 class="text-xl font-semibold mb-4">4. Configure DevStack</h3>
-
-<p class="text-gray-600 mb-4">
-Inside the <b>devstack</b> directory, create a configuration file named
-<b>local.conf</b>. This file defines the services that will be installed
-and configured during the DevStack setup.
-</p>
+<h3 class="text-xl font-semibold mb-4">
+4. Configure DevStack
+</h3>
 
 <p class="text-gray-600 mb-4">
-You must configure your own passwords and host IP address.
+Create a file named <b>local.conf</b> inside the DevStack directory.
+Configure passwords and host IP according to your environment.
 </p>
 
 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
 [[local|localrc]]
 
-# ===== Passwords =====
+# Passwords
 ADMIN_PASSWORD=
 DATABASE_PASSWORD=
 RABBIT_PASSWORD=
 SERVICE_PASSWORD=
 
-# ===== Network =====
+# Network
 HOST_IP=
 
-# ===== Disable default services =====
 disable_all_services
 
-# ===== Core services =====
+# Core Services
 enable_service mysql
 enable_service rabbit
 enable_service key
 enable_service memcached
 enable_service apache
 
-# ===== Swift services =====
+# Swift Services
 enable_service swift
 enable_service s-proxy
 enable_service s-object
 enable_service s-container
 enable_service s-account
 
-# ===== Horizon Dashboard =====
+# Horizon Dashboard
 enable_service horizon
 
-# ===== Swift Configuration =====
+# Swift Configuration
 SWIFT_HASH=devstackswift
 SWIFT_REPLICAS=1
 SWIFT_DATA_DIR=$DEST/data/swift
 </pre>
 
-
-
-<h3 class="text-xl font-semibold mb-4">5. Install OpenStack Services</h3>
+<h3 class="text-xl font-semibold mb-4">
+5. Install OpenStack Services
+</h3>
 
 <p class="text-gray-600 mb-4">
-After creating the configuration file, run the DevStack installation
-script. This script will automatically install and configure all required
-OpenStack services including Keystone, Swift and Horizon.
+Run the DevStack installation script.
 </p>
 
 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-8 text-sm">
 ./stack.sh
 </pre>
 
-
-
-<h3 class="text-xl font-semibold mb-4">6. Configure Users in Horizon</h3>
+<h3 class="text-xl font-semibold mb-4">
+6. Configure Users in Horizon
+</h3>
 
 <p class="text-gray-600 mb-8">
-Once the installation is complete, users must log in to the Horizon
-dashboard to configure user accounts, projects and permissions required
-for accessing the Swift object storage service.
+After installation is completed, log in to Horizon and create
+projects, users and permissions required for Swift access.
 </p>
 
-<h3 class="text-xl font-semibold mb-4">7. Increase Swift Storage Capacity</h3>
+<h3 class="text-xl font-semibold mb-4">
+7. Configure Swift Replication Environment
+</h3>
 
-<p class="text-gray-600 mb-4">
-By default, DevStack allocates a relatively small disk image for the
-OpenStack Swift storage service. For testing environments or development
-purposes, it is often necessary to increase the available storage capacity.
-The following steps explain how to resize the Swift storage image.
+<p class="text-gray-600 mb-6">
+Instead of using the default single-device Swift storage configuration,
+this project uses two storage devices (<b>sdb1</b> and <b>sdb2</b>)
+to demonstrate object replication and fault recovery.
 </p>
 
-
-<p class="text-gray-600 mb-4">
-First, list the available block devices in the system to understand the
-current storage layout.
-</p>
+<h4 class="text-lg font-semibold mb-4">
+Step 1 – Expand sdb1 to 20GB
+</h4>
 
 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
-lsblk
+ls -lh /opt/stack/data/swift/drives/images/swift.img
+
+sudo truncate -s 20G \
+/opt/stack/data/swift/drives/images/swift.img
+
+sudo losetup -c /dev/loop0
+
+sudo xfs_growfs /opt/stack/data/swift/drives/sdb1
+
+df -h /opt/stack/data/swift/drives/sdb1
 </pre>
 
-
-<p class="text-gray-600 mb-4">
-Next, identify the loop device associated with the Swift storage image.
-Since the loop device number may vary depending on the system configuration,
-use the following command to locate the correct device.
+<p class="text-gray-600 mb-8">
+Expected size: approximately 20GB.
 </p>
 
+<h4 class="text-lg font-semibold mb-4">
+Step 2 – Create the Second Storage Device (sdb2)
+</h4>
+
 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
-sudo losetup -l | grep swift.img
+sudo truncate -s 20G \
+/opt/stack/data/swift/drives/images/swift2.img
+
+sudo mkfs.xfs -f \
+/opt/stack/data/swift/drives/images/swift2.img
+
+sudo mkdir -p \
+/opt/stack/data/swift/drives/sdb1/1/sdb2
+
+sudo mount -o loop,noatime,nodiratime \
+/opt/stack/data/swift/drives/images/swift2.img \
+/opt/stack/data/swift/drives/sdb1/1/sdb2
 </pre>
 
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+sudo mkdir -p \
+/opt/stack/data/swift/drives/sdb1/1/sdb2/objects
 
-<p class="text-gray-600 mb-4">
-The output will display the loop device currently mapped to the Swift
-storage image. For example:
+sudo mkdir -p \
+/opt/stack/data/swift/drives/sdb1/1/sdb2/accounts
+
+sudo mkdir -p \
+/opt/stack/data/swift/drives/sdb1/1/sdb2/containers
+
+sudo chown -R stack:stack \
+/opt/stack/data/swift/drives/sdb1/1/sdb2
+</pre>
+
+<h4 class="text-lg font-semibold mb-4">
+Step 3 – Add sdb2 to Swift Rings
+</h4>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+/opt/stack/data/venv/bin/swift-ring-builder \
+/etc/swift/object.builder add \
+r1z2-127.0.0.1:6613/sdb2 1
+
+/opt/stack/data/venv/bin/swift-ring-builder \
+/etc/swift/container.builder add \
+r1z2-127.0.0.1:6611/sdb2 1
+
+/opt/stack/data/venv/bin/swift-ring-builder \
+/etc/swift/account.builder add \
+r1z2-127.0.0.1:6612/sdb2 1
+</pre>
+
+<h4 class="text-lg font-semibold mb-4">
+Step 4 – Set Replication Factor
+</h4>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+/opt/stack/data/venv/bin/swift-ring-builder \
+/etc/swift/object.builder set_replicas 2
+
+/opt/stack/data/venv/bin/swift-ring-builder \
+/etc/swift/container.builder set_replicas 2
+
+/opt/stack/data/venv/bin/swift-ring-builder \
+/etc/swift/account.builder set_replicas 2
+</pre>
+
+<h4 class="text-lg font-semibold mb-4">
+Step 5 – Rebalance Rings
+</h4>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+/opt/stack/data/venv/bin/swift-ring-builder \
+/etc/swift/object.builder rebalance
+
+/opt/stack/data/venv/bin/swift-ring-builder \
+/etc/swift/container.builder rebalance
+
+/opt/stack/data/venv/bin/swift-ring-builder \
+/etc/swift/account.builder rebalance
+</pre>
+
+<h4 class="text-lg font-semibold mb-4">
+Step 6 – Verify Ring Configuration
+</h4>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+/opt/stack/data/venv/bin/swift-ring-builder \
+/etc/swift/object.builder
+</pre>
+
+<p class="text-gray-600 mb-8">
+The output should display 2 replicas and 2 devices (sdb1 and sdb2).
 </p>
 
-<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
-/dev/loop5   /opt/stack/data/swift/drives/images/swift.img
+<h4 class="text-lg font-semibold mb-4">
+Step 7 – Restart Swift Services
+</h4>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-8 text-sm">
+sudo systemctl restart devstack@s-account
+sudo systemctl restart devstack@s-container
+sudo systemctl restart devstack@s-object
+sudo systemctl restart devstack@s-proxy
 </pre>
 
+<h3 class="text-xl font-semibold mb-4">
+8. Replication Verification
+</h3>
 
 <p class="text-gray-600 mb-4">
-Once the correct loop device is identified, resize the Swift disk image.
-Replace <b>XG</b> with the desired storage size (for example 50G, 70G or 100G).
-</p>
-
-<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
-sudo truncate -s XG /opt/stack/data/swift/drives/images/swift.img
-</pre>
-
-
-<p class="text-gray-600 mb-4">
-After resizing the image file, reload the loop device so that the system
-recognizes the new disk size. Replace <b>/dev/loopX</b> with the loop device
-identified in the previous step.
-</p>
-
-<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
-sudo losetup -c /dev/loopX
-</pre>
-
-
-<p class="text-gray-600 mb-4">
-Finally, verify that the Swift storage volume has been successfully expanded.
+Upload a file through Horizon and verify that object replicas exist
+on both storage devices.
 </p>
 
 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-8 text-sm">
-df -h /opt/stack/data/swift/drives
+echo "========== NODE 1 (sdb1) =========="
+find /opt/stack/data/swift/drives/sdb1/1/sdb1 -name "*.data"
+
+echo
+
+echo "========== NODE 2 (sdb2) =========="
+find /opt/stack/data/swift/drives/sdb1/1/sdb2 -name "*.data"
 </pre>
 
-
-<p class="text-gray-600">
-If the configuration is correct, the displayed storage capacity should
-reflect the newly allocated disk size.
-</p>
-
-<h3 class="text-xl font-semibold mb-4">8. Disable Horizon (Optional)</h3>
+<h3 class="text-xl font-semibold mb-4">
+9. Node Failure and Recovery Test
+</h3>
 
 <p class="text-gray-600 mb-4">
-After completing the initial configuration, the Horizon dashboard can be
-disabled if it is no longer required.
+This experiment demonstrates the fault-tolerance capability of OpenStack
+Swift. Since the storage system has been configured with two replicas,
+object data should remain available even if one storage device loses its
+local copy.
 </p>
 
 <p class="text-gray-600 mb-4">
-Edit the Horizon configuration file:
+In OpenStack Swift, uploaded objects are stored inside partition
+directories that are automatically generated by the Swift ring hashing
+mechanism. Therefore, partition numbers are not fixed and may vary
+between deployments.
+</p>
+
+<p class="text-gray-600 mb-4">
+Before simulating a failure, identify the available object partitions
+stored on <b>sdb1</b>.
 </p>
 
 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
-sudo nano /etc/apache2/sites-enabled/horizon.conf
+find /opt/stack/data/swift/drives/sdb1/1/sdb1/objects \
+-maxdepth 1 -type d
 </pre>
 
 <p class="text-gray-600 mb-4">
-Add the following configuration to disable dashboard access:
+The output may contain partition directories similar to:
 </p>
 
 <pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
-&lt;Location /dashboard&gt;
-Require all denied
-&lt;/Location&gt;
+objects/302
+objects/187
+objects/541
+...
 </pre>
 
 <p class="text-gray-600 mb-4">
-Reload the Apache service to apply the changes:
+Select a partition that contains uploaded object data and remove it from
+<b>sdb1</b> to simulate a storage node failure. The partition number shown
+below is only an example and should be replaced with an existing
+partition in your environment.
 </p>
 
-<pre class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm">
-sudo systemctl reload apache2
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+sudo rm -rf \
+/opt/stack/data/swift/drives/sdb1/1/sdb1/objects/&lt;partition_id&gt;
 </pre>
 
-</section>
+<p class="text-gray-600 mb-4">
+Example:
+</p>
 
-<!-- USAGE -->
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+sudo rm -rf \
+/opt/stack/data/swift/drives/sdb1/1/sdb1/objects/302
+</pre>
 
-<section id="usage" class="doc-section">
+<p class="text-gray-600 mb-4">
+After removing the partition, restart the Swift Object service and
+manually trigger the replication process.
+</p>
 
-<h2 class="text-3xl font-bold mb-6">Usage Guide</h2>
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-8 text-sm">
+sudo systemctl restart devstack@s-object
+
+/opt/stack/data/venv/bin/swift-object-replicator \
+/etc/swift/object-server/1.conf once
+</pre>
+
+<p class="text-gray-600 mb-4">
+The replicator scans all devices and compares local partitions with
+their replicas stored on other devices. If a partition is missing,
+Swift automatically reconstructs the lost data from the remaining
+replica.
+</p>
+
+<p class="text-gray-600 mb-4">
+Verify that the deleted partition has been recreated:
+</p>
+
+<pre class="bg-gray-900 text-green-400 p-4 rounded-lg mb-6 text-sm">
+find /opt/stack/data/swift/drives/sdb1/1/sdb1/objects \
+-maxdepth 1 -type d
+</pre>
+
+<p class="text-gray-600 mb-8">
+If the partition reappears and the uploaded objects remain accessible,
+the recovery process has completed successfully. This confirms that the
+OpenStack Swift replication mechanism can automatically restore lost
+object data after a storage failure.
+</p>
+
+
+<h3 class="text-xl font-semibold mb-4">
+10. Conclusion
+</h3>
 
 <p class="text-gray-600">
-This section explains how to use the SWIFT Cloud app across supported platforms.
+The Swift storage cluster is now configured with two replicated storage
+devices. This setup demonstrates object replication, node failure
+simulation and automatic recovery using the OpenStack Swift replication
+mechanism.
 </p>
 
 </section>
+
 
 
 <!-- DESKTOP -->
